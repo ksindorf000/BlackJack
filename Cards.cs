@@ -6,26 +6,50 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
+    public enum Suit
+    {
+        Hearts,
+        Spades,
+        Clubs,
+        Diamonds
+    }
+
+    public enum Face
+    {
+        One, Two, Three, Four,
+        Five, Six, Seven, Eight,
+        Nine, Jack, Queen, King, Ace
+    }
+
     public class Cards
     {
-        int value;
-        string name;
+        public Suit suit;
+        public Face face;
+
 
         /************************************
          * Constructor
          ***********************************/
-        public Cards(int _value, string _name)
+        public Cards(Suit _suit, Face _face)
         {
-            value = _value;
-            name = _name;
+            face = _face;
+            suit = _suit;
         }
 
         /************************************
-         * DisplayValue()
+         * DisplaySuit()
          ***********************************/
-        public int DisplayValue()
+        public Suit DisplaySuit()
         {
-            return value;
+            return suit;
+        }
+
+        /************************************
+         * DisplayFace()
+         ***********************************/
+        public Face DisplayFace()
+        {
+            return face;
         }
 
     }
