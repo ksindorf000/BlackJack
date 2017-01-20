@@ -27,6 +27,12 @@ namespace BlackJack
         public Suit suit;
         public Face face;
 
+        /************************************
+         * Default Constructor
+         ***********************************/
+        public Cards()
+        {
+        }
 
         /************************************
          * Constructor

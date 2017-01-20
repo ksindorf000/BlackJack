@@ -32,7 +32,7 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Hearts
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        private static void CreateHearts(List<Cards> deck, Random rng)
+        public static void CreateHearts(List<Cards> deck, Random rng)
         {
             for (int i = 0; i < 13; i++)
             {
@@ -49,7 +49,7 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Diamonds
          *      Adds cards to deck<Cards>
          **********************************************************************/
-        private static void CreateDiamonds(List<Cards> deck, Random rng)
+        public static void CreateDiamonds(List<Cards> deck, Random rng)
         {
             for (int i = 0; i < 13; i++)
             {
@@ -66,7 +66,7 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Clubs
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        private static void CreateClubs(List<Cards> deck, Random rng)
+        public static void CreateClubs(List<Cards> deck, Random rng)
         {
             for (int i = 0; i < 13; i++)
             {
@@ -83,7 +83,7 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Spades
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        private static void CreateSpades(List<Cards> deck, Random rng)
+        public static void CreateSpades(List<Cards> deck, Random rng)
         {
             for (int i = 0; i < 13; i++)
             {
