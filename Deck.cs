@@ -8,6 +8,8 @@ namespace BlackJack
 {
     public class Deck
     {
+        public static Face[] faceList = (Face[])Enum.GetValues(typeof(Face));
+
         /************************************
          * CreateDeck()
          *      Calls card creation methods
@@ -19,9 +21,9 @@ namespace BlackJack
             var rng = new Random();
 
             CreateHearts(deck, rng);
-            CreateHearts(deck, rng);
-            CreateHearts(deck, rng);
-            CreateHearts(deck, rng);
+            CreateSpades(deck, rng);
+            CreateDiamonds(deck, rng);
+            CreateClubs(deck, rng);
 
             return deck;
         }
@@ -34,13 +36,9 @@ namespace BlackJack
          ******************************************************************/
         public static void CreateHearts(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < faceList.Count(); i ++)
             {
-                Array face = Enum.GetValues(typeof(Face));
-                Random random = new Random();
-                Face cardFace = (Face)face.GetValue(random.Next(face.Length));
-
-                deck.Add(new Cards(Suit.Hearts, cardFace));
+                deck.Add(new Cards(Suit.Hearts, faceList[i]));
             }
         }
 
@@ -51,13 +49,9 @@ namespace BlackJack
          **********************************************************************/
         public static void CreateDiamonds(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < faceList.Count(); i++)
             {
-                Array face = Enum.GetValues(typeof(Face));
-                Random random = new Random();
-                Face cardFace = (Face)face.GetValue(random.Next(face.Length));
-
-                deck.Add(new Cards(Suit.Diamonds, cardFace));
+                deck.Add(new Cards(Suit.Diamonds, faceList[i]));
             }
         }
 
@@ -68,13 +62,9 @@ namespace BlackJack
          ******************************************************************/
         public static void CreateClubs(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < faceList.Count(); i++)
             {
-                Array face = Enum.GetValues(typeof(Face));
-                Random random = new Random();
-                Face cardFace = (Face)face.GetValue(random.Next(face.Length));
-
-                deck.Add(new Cards(Suit.Clubs, cardFace));
+                deck.Add(new Cards(Suit.Clubs, faceList[i]));
             }
         }
 
@@ -85,13 +75,9 @@ namespace BlackJack
          ******************************************************************/
         public static void CreateSpades(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < faceList.Count(); i++)
             {
-                Array face = Enum.GetValues(typeof(Face));
-                Random random = new Random();
-                Face cardFace = (Face)face.GetValue(random.Next(face.Length));
-
-                deck.Add(new Cards(Suit.Spades, cardFace));
+                deck.Add(new Cards(Suit.Spades, faceList[i]));
             }
         }
 
