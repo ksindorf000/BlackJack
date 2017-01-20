@@ -16,9 +16,10 @@ namespace BlackJack
 
     public enum Face
     {
-        One, Two, Three, Four,
+        Two = 2, Three = 3, Four,
         Five, Six, Seven, Eight,
-        Nine, Jack, Queen, King, Ace
+        Nine, Jack = 10, Queen = 10,
+        King = 10, Ace = 11
     }
 
     public class Cards
