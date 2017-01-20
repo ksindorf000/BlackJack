@@ -34,7 +34,7 @@ namespace BlackJack
          ******************************************************************/
         private static void CreateHearts(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 13; i++)
             {
                 Array face = Enum.GetValues(typeof(Face));
                 Random random = new Random();
@@ -51,7 +51,7 @@ namespace BlackJack
          **********************************************************************/
         private static void CreateDiamonds(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 13; i++)
             {
                 Array face = Enum.GetValues(typeof(Face));
                 Random random = new Random();
@@ -68,7 +68,7 @@ namespace BlackJack
          ******************************************************************/
         private static void CreateClubs(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 13; i++)
             {
                 Array face = Enum.GetValues(typeof(Face));
                 Random random = new Random();
@@ -85,7 +85,7 @@ namespace BlackJack
          ******************************************************************/
         private static void CreateSpades(List<Cards> deck, Random rng)
         {
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 13; i++)
             {
                 Array face = Enum.GetValues(typeof(Face));
                 Random random = new Random();
