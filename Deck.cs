@@ -20,9 +20,9 @@ namespace BlackJack
             var deck = new List<Cards>();
 
             CreateHearts(deck);
-            CreateSpades(deck);
             CreateDiamonds(deck);
             CreateClubs(deck);
+            CreateSpades(deck);
 
             return deck;
         }
@@ -35,14 +35,16 @@ namespace BlackJack
          ******************************************************************/
         public static void CreateHearts(List<Cards> deck)
         {
-            for (int i = 0; i < 9; i ++)
+            for (int i = 0; i < 9; i++)
             {
-                deck.Add(new Cards(Suit.Hearts, faceList[i]));
+                int count = i + 2;
+                deck.Add(new Cards(Suit.Hearts, faceList[i], count));
             }
 
-            deck.Add(new Cards(Suit.Hearts, Face.Queen));
-            deck.Add(new Cards(Suit.Hearts, Face.King));
-            deck.Add(new Cards(Suit.Hearts, Face.Ace));
+            deck.Add(new Cards(Suit.Hearts, Face.Jack, 10));
+            deck.Add(new Cards(Suit.Hearts, Face.King, 10));
+            deck.Add(new Cards(Suit.Hearts, Face.Queen, 10));
+            deck.Add(new Cards(Suit.Hearts, Face.Ace, 11));
         }
 
         /**********************************************************************
@@ -54,12 +56,14 @@ namespace BlackJack
         {
             for (int i = 0; i < 9; i++)
             {
-                deck.Add(new Cards(Suit.Diamonds, faceList[i]));
+                int count = i + 2;
+                deck.Add(new Cards(Suit.Diamonds, faceList[i], count));
             }
 
-            deck.Add(new Cards(Suit.Diamonds, Face.Queen));
-            deck.Add(new Cards(Suit.Diamonds, Face.King));
-            deck.Add(new Cards(Suit.Diamonds, Face.Ace));
+            deck.Add(new Cards(Suit.Diamonds, Face.Jack, 10));
+            deck.Add(new Cards(Suit.Diamonds, Face.King, 10));
+            deck.Add(new Cards(Suit.Diamonds, Face.Queen, 10));
+            deck.Add(new Cards(Suit.Diamonds, Face.Ace, 11));
         }
 
         /*******************************************************************
@@ -71,12 +75,14 @@ namespace BlackJack
         {
             for (int i = 0; i < 9; i++)
             {
-                deck.Add(new Cards(Suit.Clubs, faceList[i]));
+                int count = i + 2;
+                deck.Add(new Cards(Suit.Clubs, faceList[i], count));
             }
 
-            deck.Add(new Cards(Suit.Clubs, Face.Queen));
-            deck.Add(new Cards(Suit.Clubs, Face.King));
-            deck.Add(new Cards(Suit.Clubs, Face.Ace));
+            deck.Add(new Cards(Suit.Clubs, Face.Jack, 10));
+            deck.Add(new Cards(Suit.Clubs, Face.King, 10));
+            deck.Add(new Cards(Suit.Clubs, Face.Queen, 10));
+            deck.Add(new Cards(Suit.Clubs, Face.Ace, 11));
         }
 
         /*******************************************************************
@@ -88,13 +94,14 @@ namespace BlackJack
         {
             for (int i = 0; i < 9; i++)
             {
-                deck.Add(new Cards(Suit.Spades, faceList[i]));
+                int count = i + 2;
+                deck.Add(new Cards(Suit.Spades, faceList[i], count));
             }
 
-            deck.Add(new Cards(Suit.Spades, Face.Queen));
-            deck.Add(new Cards(Suit.Spades, Face.King));
-            deck.Add(new Cards(Suit.Spades, Face.Ace));
-
+            deck.Add(new Cards(Suit.Spades, Face.Jack, 10));
+            deck.Add(new Cards(Suit.Spades, Face.King, 10));
+            deck.Add(new Cards(Suit.Spades, Face.Queen, 10));
+            deck.Add(new Cards(Suit.Spades, Face.Ace, 11));
         }
 
     }

@@ -16,16 +16,16 @@ namespace BlackJack
 
     public enum Face
     {
-        Two = 2, Three = 3, Four = 4,
-        Five = 5, Six = 6, Seven = 7, Eight = 8,
-        Nine = 9, Ten = 10,  Jack = 10, Queen = 10,
-        King = 10, Ace = 11
+        Two, Three, Four, Five,
+        Six, Seven, Eight, Nine,
+        Ten, Jack, Queen, King, Ace
     }
 
     public class Cards
     {
         public Suit suit;
         public Face face;
+        private int value;
 
         /************************************
          * Default Constructor
@@ -37,10 +37,11 @@ namespace BlackJack
         /************************************
          * Overload Constructor
          ***********************************/
-        public Cards(Suit _suit, Face _face)
+        public Cards(Suit _suit, Face _face, int _value)
         {
             face = _face;
             suit = _suit;
+            value = _value;
         }
 
         /************************************
@@ -57,6 +58,14 @@ namespace BlackJack
         public Face DisplayFace()
         {
             return face;
+        }
+
+        /************************************
+         * DisplayValue()
+         ***********************************/
+        public int DisplayValue()
+        {
+            return value;
         }
 
     }
