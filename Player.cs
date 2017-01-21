@@ -10,11 +10,18 @@ namespace BlackJack
     {
         static private List<Cards> playerHand = new List<Cards>();
 
+        /************************************
+         * Default Constructor
+         ***********************************/
+        public Player()
+        {
+        }
 
-
-        public static List<Cards> DisplayHand()
+        public virtual List<Cards> DisplayHand()
         {
             return playerHand;
         }
+
+
     }
 }
