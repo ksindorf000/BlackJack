@@ -18,12 +18,11 @@ namespace BlackJack
         public static List<Cards> CreateDeck()
         {
             var deck = new List<Cards>();
-            var rng = new Random();
 
-            CreateHearts(deck, rng);
-            CreateSpades(deck, rng);
-            CreateDiamonds(deck, rng);
-            CreateClubs(deck, rng);
+            CreateHearts(deck);
+            CreateSpades(deck);
+            CreateDiamonds(deck);
+            CreateClubs(deck);
 
             return deck;
         }
@@ -34,12 +33,16 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Hearts
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        public static void CreateHearts(List<Cards> deck, Random rng)
+        public static void CreateHearts(List<Cards> deck)
         {
-            for (int i = 0; i < faceList.Count(); i ++)
+            for (int i = 0; i < 9; i ++)
             {
                 deck.Add(new Cards(Suit.Hearts, faceList[i]));
             }
+
+            deck.Add(new Cards(Suit.Hearts, Face.Queen));
+            deck.Add(new Cards(Suit.Hearts, Face.King));
+            deck.Add(new Cards(Suit.Hearts, Face.Ace));
         }
 
         /**********************************************************************
@@ -47,12 +50,16 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Diamonds
          *      Adds cards to deck<Cards>
          **********************************************************************/
-        public static void CreateDiamonds(List<Cards> deck, Random rng)
+        public static void CreateDiamonds(List<Cards> deck)
         {
-            for (int i = 0; i < faceList.Count(); i++)
+            for (int i = 0; i < 9; i++)
             {
                 deck.Add(new Cards(Suit.Diamonds, faceList[i]));
             }
+
+            deck.Add(new Cards(Suit.Diamonds, Face.Queen));
+            deck.Add(new Cards(Suit.Diamonds, Face.King));
+            deck.Add(new Cards(Suit.Diamonds, Face.Ace));
         }
 
         /*******************************************************************
@@ -60,12 +67,16 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Clubs
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        public static void CreateClubs(List<Cards> deck, Random rng)
+        public static void CreateClubs(List<Cards> deck)
         {
-            for (int i = 0; i < faceList.Count(); i++)
+            for (int i = 0; i < 9; i++)
             {
                 deck.Add(new Cards(Suit.Clubs, faceList[i]));
             }
+
+            deck.Add(new Cards(Suit.Clubs, Face.Queen));
+            deck.Add(new Cards(Suit.Clubs, Face.King));
+            deck.Add(new Cards(Suit.Clubs, Face.Ace));
         }
 
         /*******************************************************************
@@ -73,12 +84,17 @@ namespace BlackJack
          *      Creates cards with random Face value and set Suit of Spades
          *      Adds cards to deck<Cards>
          ******************************************************************/
-        public static void CreateSpades(List<Cards> deck, Random rng)
+        public static void CreateSpades(List<Cards> deck)
         {
-            for (int i = 0; i < faceList.Count(); i++)
+            for (int i = 0; i < 9; i++)
             {
                 deck.Add(new Cards(Suit.Spades, faceList[i]));
             }
+
+            deck.Add(new Cards(Suit.Spades, Face.Queen));
+            deck.Add(new Cards(Suit.Spades, Face.King));
+            deck.Add(new Cards(Suit.Spades, Face.Ace));
+
         }
 
     }

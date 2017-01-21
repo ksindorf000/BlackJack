@@ -35,7 +35,7 @@ namespace BlackJack
         }
 
         /************************************
-         * Constructor
+         * Overload Constructor
          ***********************************/
         public Cards(Suit _suit, Face _face)
         {
