@@ -55,8 +55,7 @@ namespace BlackJack
 
             return whoseTurn.score;
         }
-
-
+        
         /***********************************************************
          * WinConditions()
          *      Determines if the player/dealer has busted or won
