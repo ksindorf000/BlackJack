@@ -135,7 +135,17 @@ namespace BlackJack
                 valid = ValidateInput(hitStay);
             } while (!valid);
 
+            PerformHitStay(whoseTurn, deck, hitStay);
 
+        }
+
+        /*******************************************************
+        * PerformHitStay()
+        *       If Hit, deal card to hand
+        *       If Stay, change State
+        ******************************************************/
+        public static void PerformHitStay(Player whoseTurn, List<Cards> deck, string hitStay)
+        {
             if (hitStay == "h")
             {
                 Dealer.DealCardToHand(whoseTurn, deck);
@@ -144,7 +154,6 @@ namespace BlackJack
             {
                 whoseTurn.currentState = State.Stay;
             }
-
         }
 
         /*******************************************************
