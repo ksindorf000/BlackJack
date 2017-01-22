@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
-    class PlayGame
+    public class PlayGame
     {
 
         /*******************************************************
@@ -50,9 +50,9 @@ namespace BlackJack
         }
 
         /*******************************************************
-      * InitialDeal()
-      *      Deals and displays two cards for player
-      *      Deals two cards and displays one for dealer
+      * PlayerTurns()
+      *      Calulates score and checks win conditions
+      *      If no Win or Bust, asks for player move
        ******************************************************/
         public static void PlayerTurns(List<Player> playerList, List<Cards> deck1)
         {
@@ -130,7 +130,7 @@ namespace BlackJack
 
             do
             {
-                Console.WriteLine("Hit or Stay (H/S): ");
+                Console.WriteLine($"{whoseTurn.name} Hit or Stay? (H/S): ");
                 hitStay = Console.ReadLine().ToLower();
                 valid = ValidateInput(hitStay);
             } while (!valid);

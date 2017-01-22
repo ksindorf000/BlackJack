@@ -24,12 +24,11 @@ namespace BlackJack
             playerList.Add(player);
 
             //Initial Deal of two cards per player
-            BlackJack.PlayGame.InitialDeal(playerList, deck1);
+            PlayGame.InitialDeal(playerList, deck1);
 
-            //Play the game
+            //Players Hit or Stay
             PlayGame.PlayerTurns(playerList, deck1);
 
-            //PlayGame.DisplayFinal(playerList);
             
         }
     }
