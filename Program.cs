@@ -55,7 +55,7 @@ namespace BlackJack
                 }
             }
 
-            PlayGame.DisplayFinal(playerList);
+            //PlayGame.DisplayFinal(playerList);
 
         }
     }

@@ -16,13 +16,37 @@ namespace BlackJack
         ******************************************************/
         public static void InitialDeal(List<Player> playerList, List<Cards> deck)
         {
+            //Each player/dealer gets two cards
             foreach (Player p in playerList)
             {
                 Dealer.DealCardToHand(p, deck);
                 Dealer.DealCardToHand(p, deck);
             }
 
-            DisplayBoard(playerList);
+            //Display both cards for everyone but the dealer (display 1)
+            foreach (Player p in playerList)
+            {
+                Console.WriteLine($"{p.name}'s Hand: ");
+
+                foreach (Cards card in p.hand)
+                {
+                    Console.Write(card.DisplayFace() + " ");
+                    Console.Write(card.DisplaySuit() + "\n");
+
+                    if (p.name == "Dealer")
+                    {
+                        Console.WriteLine("\n");
+                        break;
+                    }
+                }
+
+                if (p.name == "Dealer")
+                {
+                    continue;
+                }
+
+                Console.WriteLine("\n");
+            }
         }
 
         /*******************************************************
