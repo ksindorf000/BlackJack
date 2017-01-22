@@ -8,11 +8,25 @@ namespace BlackJack
 {
     class PlayGame
     {
-          /*******************************************************
-         * DisplayBoard()
-         *      Displays hands of each player/dealer
-         *      Intend to add funcionality for multiple players
-'         ******************************************************/
+
+        /*******************************************************
+       * InitialDeal()
+       *      Deals and displays two cards for player
+       *      Deals two cards and displays one for dealer
+        ******************************************************/
+        public static void InitialDeal(Player dealer, Player player, List<Cards> deck)
+        {
+            Dealer.DealCardToHand(player, deck);
+            Dealer.DealCardToHand(player, deck);
+            Dealer.DealCardToHand(dealer, deck);
+            DisplayBoard(dealer, player);
+        }
+
+        /*******************************************************
+       * DisplayBoard()
+       *      Displays hands of each player/dealer
+       *      Intend to add funcionality for multiple players
+        ******************************************************/
         public static void DisplayBoard(Player dealer, Player player)
         {
             Console.WriteLine("Player's Hand: ");
@@ -32,19 +46,57 @@ namespace BlackJack
             }
         }
 
-          /*******************************************************
-         * InitialDeal()
-         *      Deals and displays two cards for player
-         *      Deals two cards and displays one for dealer
-'         ******************************************************/
-        public static void InitialDeal(Player dealer, Player player, List<Cards> deck)
+        /*******************************************************
+        * CheckForWinBust()
+        ******************************************************/
+        public static void CheckForWinBust(Player whoseTurn, List<Cards> deck)
         {
-            Dealer.DealCardToHand(player, deck);
-            Dealer.DealCardToHand(player, deck);
-            Dealer.DealCardToHand(dealer, deck);
-            DisplayBoard(dealer, player);
+            int score = Player.CalcScore(whoseTurn);
+            Player.WinConditions(whoseTurn);
         }
 
+        /*******************************************************
+        * HitOrStay()
+        ******************************************************/
+        public static void HitOrStay(Player whoseTurn, List<Cards> deck)
+        {
+            bool valid = true;
+            string hitStay;
+
+
+            do
+            {
+                Console.WriteLine("Hit or Stay (H/S): ");
+                hitStay = Console.ReadLine().ToLower();
+                valid = ValidateInput(hitStay);
+            } while (!valid);
+
+
+            if (hitStay == "h")
+            {
+                Dealer.DealCardToHand(whoseTurn, deck);
+            }
+            else if (hitStay == "s")
+            {
+
+            }
+
+        }
+
+        /*******************************************************
+        * ValidateInput()
+        ******************************************************/
+        public static bool ValidateInput(String hitStay)
+        {
+            if (hitStay == "h" || hitStay == "s")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
 }

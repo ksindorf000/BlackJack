@@ -10,13 +10,12 @@ namespace BlackJack
     {
         static void Main(string[] args)
         {
-            Player dealer = new Player("dealer");
+            Dealer dealer = new Dealer();
             Player player = new Player("player");
 
             List<Cards> deck1 = Deck.CreateDeck();
 
             PlayGame.InitialDeal(dealer, player, deck1);
-
 
         }
     }

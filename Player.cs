@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
+    public enum State
+    {
+        NoBust, Bust, Won
+    }
+
     public class Player
     {
         public string name;
         public int score;
+        public State currentState = State.NoBust; 
 
         /************************************
          * Default Constructor
@@ -51,12 +57,26 @@ namespace BlackJack
         }
 
 
-        /****************************************
-         * HitOrStay()
-         *      Determines dealer's next move
-         ***************************************/
-        public static void HitOrStay(Player whoseTurn)
+        /***********************************************************
+         * WinConditions()
+         *      Determines if the player/dealer has busted or won
+         ***********************************************************/
+        public static State WinConditions(Player whoseTurn)
         {
+            if (whoseTurn.score > 21)
+            {
+                whoseTurn.currentState = State.Bust;
+            }
+            else if (whoseTurn.score == 21)
+            {
+                whoseTurn.currentState = State.Won;
+            }
+            else
+            {
+                whoseTurn.currentState = State.NoBust;
+            }
+
+            return whoseTurn.currentState;
         }
 
 
