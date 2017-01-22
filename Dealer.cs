@@ -31,9 +31,9 @@ namespace BlackJack
         /************************************
          * DealCardToHand()
          ***********************************/
-        public static void DealCardToHand(string whoseTurn)
+        public static void DealCardToHand(Player whoseTurn)
         {
-            if (whoseTurn.ToLower() == "player")
+            if (whoseTurn.name.ToLower() == "player")
             {
                 Random rng = new Random();
                 Cards card = deck[rng.Next(deck.Count)];
@@ -52,9 +52,9 @@ namespace BlackJack
         /************************************
          * DisplayHand()
          ***********************************/
-        public static void DisplayHand(string whoseTurn)
+        public static void DisplayHand(Player whoseTurn)
         {
-            if (whoseTurn.ToLower() == "player")
+            if (whoseTurn.name.ToLower() == "player")
             {
                 foreach (Cards card in playerHand)
                 {

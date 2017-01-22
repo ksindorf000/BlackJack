@@ -8,26 +8,52 @@ namespace BlackJack
 {
     public class Player
     {
+        public string name;
+        public int score;
+
         /************************************
          * Default Constructor
          ***********************************/
-        public Player()
+        public Player(string _name)
         {
+            name = _name;
         }
 
         /************************************
          * CalcScore()
          ***********************************/
-        public static int CalcScore()
+        public static int CalcScore(Player whoseTurn)
         {
-            int score = 0;
+            List<Cards> hand = new List<Cards>();
 
-            foreach (var card in Dealer.playerHand)
+            if (whoseTurn.name.ToLower() == "player")
             {
-                score += card.DisplayValue();
+                hand = Dealer.playerHand;
+            }
+            else
+            {
+                hand = Dealer.dealerHand;
             }
 
-            return score;
+            foreach (var card in hand)
+            {
+                whoseTurn.score += card.DisplayValue();
+            }
+
+            return whoseTurn.score;
+        }
+
+
+        /****************************************
+         * HitOrStay()
+         *      Determines dealer's next move
+         ***************************************/
+        public static void HitOrStay(Player whoseTurn)
+        {
+            while (whoseTurn.score < 17)
+            {
+                Dealer.DealCardToHand(whoseTurn);
+            }
         }
 
 

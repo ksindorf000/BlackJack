@@ -26,19 +26,21 @@ namespace BlackJack
          *      Displays one card for dealer
          *      Displays two cards for player
          ****************************************/
-        public static void InitialDeal()
+        public static void InitialDeal(Player player, Player dealer)
         {
             deck1 = Dealer.GetDeck();
 
-            Dealer.DealCardToHand("Player");
-            Dealer.DealCardToHand("Player");
+            Dealer.DealCardToHand(player);
+            Dealer.DealCardToHand(player);
 
-            Dealer.DealCardToHand("Dealer");
+            Dealer.DealCardToHand(dealer);
 
             Console.WriteLine("\n");
-            Dealer.DisplayHand("player");
+            Dealer.DisplayHand(player);
             Console.Write("\t \t \t");
-            Dealer.DisplayHand("dealer");
+            Dealer.DisplayHand(dealer);
+
+            Dealer.DealCardToHand(dealer);
 
             Console.ReadLine();
         }
