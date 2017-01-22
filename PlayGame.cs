@@ -8,57 +8,44 @@ namespace BlackJack
 {
     class PlayGame
     {
-        public static List<Cards> deck1 = new List<Cards>();
-
-        /************************************
-         * DisplayTable()
-         ***********************************/
-        public static void DisplayTable()
+          /*******************************************************
+         * DisplayBoard()
+         *      Displays hands of each player/dealer
+         *      Intend to add funcionality for multiple players
+'         ******************************************************/
+        public static void DisplayBoard(Player dealer, Player player)
         {
-            Console.Write("Player's Hand: \t \t \t");
-            Console.Write("Dealer's Hand: \n");
+            Console.WriteLine("Player's Hand: ");
+
+            foreach (Cards card in Dealer.playerHand)
+            {
+                Console.Write(card.DisplayFace() + " ");
+                Console.Write(card.DisplaySuit() + "\n");
+            }
+
+            Console.WriteLine("\nDealer's Hand: ");
+
+            foreach (Cards card in Dealer.dealerHand)
+            {
+                Console.Write(card.DisplayFace() + " ");
+                Console.Write(card.DisplaySuit() + "\n");
+            }
         }
 
-        /*****************************************
+          /*******************************************************
          * InitialDeal()
-         *      Deals 2 cards to player/dealer
-'         ****************************************/
+         *      Deals and displays two cards for player
+         *      Deals two cards and displays one for dealer
+'         ******************************************************/
         public static void InitialDeal(Player dealer, Player player, List<Cards> deck)
         {
             Dealer.DealCardToHand(player, deck);
             Dealer.DealCardToHand(player, deck);
-            DisplayHand(player);
-
             Dealer.DealCardToHand(dealer, deck);
-            DisplayHand(dealer);
-            Dealer.DealCardToHand(dealer, deck);
-
-            Console.ReadLine();
+            DisplayBoard(dealer, player);
         }
 
-        /*****************************************
-         * DisplayHand()
-         *      Displays hand of selected player/dealer
-'         ****************************************/
-        public static void DisplayHand(Player whoseHand)
-        {
-            if (whoseHand.name.ToLower() == "player")
-            {
-                foreach (Cards card in Dealer.playerHand)
-                {
-                    Console.Write(card.DisplayFace() + " ");
-                    Console.Write(card.DisplaySuit());
-                }
-            }
-            else
-            {
-                foreach (Cards card in Dealer.dealerHand)
-                {
-                    Console.Write(card.DisplayFace() + " ");
-                    Console.Write(card.DisplaySuit());
-                }
-            }
-        }
     }
+
 }
 
