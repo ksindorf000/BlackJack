@@ -8,17 +8,15 @@ namespace BlackJack
 {
     public class Dealer : Player
     {
-        static public List<Cards> dealerHand = new List<Cards>();
-        static public List<Cards> playerHand = new List<Cards>();
         static private Random rng = new Random();
-
-
+        
         /************************************
          * Default Constructor
          ***********************************/
-        public Dealer() : base ()
+        public Dealer() : base()
         {
             name = "Dealer";
+            hand = new List<Cards>();
         }
 
         /************************************
@@ -28,16 +26,8 @@ namespace BlackJack
         {
             Cards card = deck[rng.Next(deck.Count)];
 
-            if (whoseTurn.name.ToLower() == "player")
-            {               
-                playerHand.Add(card);
-                deck.Remove(card);
-            }
-            else
-            {
-                dealerHand.Add(card);
-                deck.Remove(card);
-            }
+            whoseTurn.hand.Add(card);
+            deck.Remove(card);
         }
     }
 }

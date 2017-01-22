@@ -14,12 +14,15 @@ namespace BlackJack
        *      Deals and displays two cards for player
        *      Deals two cards and displays one for dealer
         ******************************************************/
-        public static void InitialDeal(Player dealer, Player player, List<Cards> deck)
+        public static void InitialDeal(List<Player> playerList, List<Cards> deck)
         {
-            Dealer.DealCardToHand(player, deck);
-            Dealer.DealCardToHand(player, deck);
-            Dealer.DealCardToHand(dealer, deck);
-            DisplayBoard(dealer, player);
+            foreach (Player p in playerList)
+            {
+                Dealer.DealCardToHand(p, deck);
+                Dealer.DealCardToHand(p, deck);
+            }
+
+            DisplayBoard(playerList);
         }
 
         /*******************************************************
@@ -27,22 +30,19 @@ namespace BlackJack
        *      Displays hands of each player/dealer
        *      Intend to add funcionality for multiple players
         ******************************************************/
-        public static void DisplayBoard(Player dealer, Player player)
+        public static void DisplayBoard(List<Player> playerList)
         {
-            Console.WriteLine("Player's Hand: ");
-
-            foreach (Cards card in Dealer.playerHand)
+            foreach (Player p in playerList)
             {
-                Console.Write(card.DisplayFace() + " ");
-                Console.Write(card.DisplaySuit() + "\n");
-            }
+                Console.WriteLine($"{p.name}'s Hand: ");
 
-            Console.WriteLine("\nDealer's Hand: ");
+                foreach (Cards card in p.hand)
+                {
+                    Console.Write(card.DisplayFace() + " ");
+                    Console.Write(card.DisplaySuit() + "\n");
+                }
 
-            foreach (Cards card in Dealer.dealerHand)
-            {
-                Console.Write(card.DisplayFace() + " ");
-                Console.Write(card.DisplaySuit() + "\n");
+                Console.WriteLine("\n");
             }
         }
 
@@ -57,12 +57,15 @@ namespace BlackJack
 
         /*******************************************************
         * HitOrStay()
+        *       Ask and accept player move
+        *       Call for validation
+        *       Hit = deal card to hand
+        *       Stay = end turn
         ******************************************************/
         public static void HitOrStay(Player whoseTurn, List<Cards> deck)
         {
             bool valid = true;
             string hitStay;
-
 
             do
             {
@@ -78,7 +81,7 @@ namespace BlackJack
             }
             else if (hitStay == "s")
             {
-
+                whoseTurn.currentState = State.Stay;
             }
 
         }
@@ -86,7 +89,7 @@ namespace BlackJack
         /*******************************************************
         * ValidateInput()
         ******************************************************/
-        public static bool ValidateInput(String hitStay)
+        public static bool ValidateInput(string hitStay)
         {
             if (hitStay == "h" || hitStay == "s")
             {
@@ -97,6 +100,19 @@ namespace BlackJack
                 return false;
             }
         }
+
+        /*******************************************************
+       * DisplayFinal()
+       *      Displays all players/dealer score and state
+        ******************************************************/
+        public static void DisplayFinal(List<Player> playerList)
+        {
+            foreach (Player p in playerList)
+            {
+                Console.WriteLine($"{p}");
+            }
+        }
+
     }
 
 }

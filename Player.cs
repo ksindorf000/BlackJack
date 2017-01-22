@@ -8,20 +8,22 @@ namespace BlackJack
 {
     public enum State
     {
-        NoBust, Bust, Won
+        NoBust, Bust, Won, Stay
     }
 
     public class Player
     {
         public string name;
         public int score;
-        public State currentState = State.NoBust; 
+        public List<Cards> hand;
+        public State currentState = State.NoBust;
 
         /************************************
          * Default Constructor
          ***********************************/
         public Player()
         {
+            hand = new List<Cards>();
         }
 
         /************************************
@@ -30,25 +32,23 @@ namespace BlackJack
         public Player(string _name)
         {
             name = _name;
+            List<Cards> hand = new List<Cards>();
+        }
+
+        /************************************
+        * Override ToString()
+        ***********************************/
+        public override string ToString()
+        {
+            return $"{name}: {score} {currentState.ToString().ToUpper()}";
         }
 
         /************************************
          * CalcScore()
          ***********************************/
         public static int CalcScore(Player whoseTurn)
-        {
-            List<Cards> hand = new List<Cards>();
-
-            if (whoseTurn.name.ToLower() == "player")
-            {
-                hand = Dealer.playerHand;
-            }
-            else
-            {
-                hand = Dealer.dealerHand;
-            }
-
-            foreach (var card in hand)
+        {            
+            foreach (var card in whoseTurn.hand)
             {
                 whoseTurn.score += card.DisplayValue();
             }
