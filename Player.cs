@@ -8,8 +8,6 @@ namespace BlackJack
 {
     public class Player
     {
-        static private List<Cards> playerHand = new List<Cards>();
-
         /************************************
          * Default Constructor
          ***********************************/
@@ -17,9 +15,11 @@ namespace BlackJack
         {
         }
 
-        public virtual List<Cards> DisplayHand()
+        /************************************
+         * Default Constructor
+         ***********************************/
+        public void CalculateScore()
         {
-            return playerHand;
         }
 
 
