@@ -29,7 +29,13 @@ namespace BlackJack
             //Players Hit or Stay
             PlayGame.PlayerTurns(playerList, deck1);
 
-            
+            //Dealer plays turn
+            Dealer.DealerTurn(playerList[0], deck1);
+
+            //Display Final
+            PlayGame.DisplayFinal(playerList);
+
+
         }
     }
 }

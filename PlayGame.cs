@@ -73,16 +73,17 @@ namespace BlackJack
                     if (p.currentState == State.Bust || p.currentState == State.Won)
                     {
                         gameOn = false;
-                        DisplayFinal(playerList);
                     }
                     else if (p.currentState == State.NoBust)
                     {
-                        HitOrStay(p, deck1);
+                        Player.HitOrStay(p, deck1);
                         Player.CalcScore(p);
                         Player.WinConditions(p);
-                        gameOn = true;
                     }
                 }
+                Console.Clear();
+                DisplayBoard(playerList);
+
             }
         }
 
@@ -108,38 +109,6 @@ namespace BlackJack
         }
 
         /*******************************************************
-        * CheckForWinBust()
-        ******************************************************/
-        public static void CheckForWinBust(Player whoseTurn, List<Cards> deck)
-        {
-            int score = Player.CalcScore(whoseTurn);
-            Player.WinConditions(whoseTurn);
-        }
-
-        /*******************************************************
-        * HitOrStay()
-        *       Ask and accept player move
-        *       Call for validation
-        *       Hit = deal card to hand
-        *       Stay = end turn
-        ******************************************************/
-        public static void HitOrStay(Player whoseTurn, List<Cards> deck)
-        {
-            bool valid = true;
-            string hitStay;
-
-            do
-            {
-                Console.WriteLine($"{whoseTurn.name} Hit or Stay? (H/S): ");
-                hitStay = Console.ReadLine().ToLower();
-                valid = ValidateInput(hitStay);
-            } while (!valid);
-
-            PerformHitStay(whoseTurn, deck, hitStay);
-
-        }
-
-        /*******************************************************
         * PerformHitStay()
         *       If Hit, deal card to hand
         *       If Stay, change State
@@ -156,20 +125,6 @@ namespace BlackJack
             }
         }
 
-        /*******************************************************
-        * ValidateInput()
-        ******************************************************/
-        public static bool ValidateInput(string hitStay)
-        {
-            if (hitStay == "h" || hitStay == "s")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         /*******************************************************
        * DisplayFinal()
