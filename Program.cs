@@ -8,7 +8,6 @@ namespace BlackJack
 {
     class Program
     {
-        static bool gameOn = true;
         static List<Player> playerList = new List<Player>();
 
         static void Main(string[] args)
@@ -25,38 +24,13 @@ namespace BlackJack
             playerList.Add(player);
 
             //Initial Deal of two cards per player
-            PlayGame.InitialDeal(playerList, deck1);
+            BlackJack.PlayGame.InitialDeal(playerList, deck1);
 
             //Play the game
-            while (gameOn)
-            {
-                foreach (Player p in playerList)
-                {
-                    if (p.name == "Dealer")
-                    {
-                        continue;
-                    }
-
-                    Player.CalcScore(p);
-                    Player.WinConditions(p);
-
-                    if (p.currentState == State.Bust || p.currentState == State.Won)
-                    {
-                        gameOn = false;
-                        PlayGame.DisplayFinal(playerList);
-                    }
-                    else if (p.currentState == State.NoBust)
-                    {
-                        PlayGame.HitOrStay(p, deck1);
-                        Player.CalcScore(p);
-                        Player.WinConditions(p);
-                        gameOn = true;
-                    }
-                }
-            }
+            PlayGame.PlayerTurns(playerList, deck1);
 
             //PlayGame.DisplayFinal(playerList);
-
+            
         }
     }
 }

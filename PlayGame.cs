@@ -50,6 +50,43 @@ namespace BlackJack
         }
 
         /*******************************************************
+      * InitialDeal()
+      *      Deals and displays two cards for player
+      *      Deals two cards and displays one for dealer
+       ******************************************************/
+        public static void PlayerTurns(List<Player> playerList, List<Cards> deck1)
+        {
+            bool gameOn = true;
+
+            while (gameOn)
+            {
+                foreach (Player p in playerList)
+                {
+                    if (p.name == "Dealer")
+                    {
+                        continue;
+                    }
+
+                    Player.CalcScore(p);
+                    Player.WinConditions(p);
+
+                    if (p.currentState == State.Bust || p.currentState == State.Won)
+                    {
+                        gameOn = false;
+                        DisplayFinal(playerList);
+                    }
+                    else if (p.currentState == State.NoBust)
+                    {
+                        HitOrStay(p, deck1);
+                        Player.CalcScore(p);
+                        Player.WinConditions(p);
+                        gameOn = true;
+                    }
+                }
+            }
+        }
+
+        /*******************************************************
        * DisplayBoard()
        *      Displays hands of each player/dealer
        *      Intend to add funcionality for multiple players
