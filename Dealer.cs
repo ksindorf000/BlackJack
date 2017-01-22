@@ -8,9 +8,9 @@ namespace BlackJack
 {
     public class Dealer
     {
-        static private List<Cards> dealerHand = new List<Cards>();
-        static private List<Cards> playerHand = new List<Cards>();
-        static private List<Cards> deck = new List<Cards>();
+        static public List<Cards> dealerHand = new List<Cards>();
+        static public List<Cards> playerHand = new List<Cards>();
+        static public List<Cards> deck = new List<Cards>();
 
         /************************************
          * Default Constructor
