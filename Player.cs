@@ -32,7 +32,7 @@ namespace BlackJack
         public Player(string _name)
         {
             name = _name;
-            List<Cards> hand = new List<Cards>();
+            hand = new List<Cards>();
         }
 
         /************************************
