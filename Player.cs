@@ -16,10 +16,18 @@ namespace BlackJack
         }
 
         /************************************
-         * Default Constructor
+         * CalcScore()
          ***********************************/
-        public void CalculateScore()
+        public static int CalcScore()
         {
+            int score = 0;
+
+            foreach (var card in Dealer.playerHand)
+            {
+                score += card.DisplayValue();
+            }
+
+            return score;
         }
 
 
