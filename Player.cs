@@ -14,6 +14,13 @@ namespace BlackJack
         /************************************
          * Default Constructor
          ***********************************/
+        public Player()
+        {
+        }
+
+        /************************************
+        * Constructor
+        ***********************************/
         public Player(string _name)
         {
             name = _name;
@@ -50,10 +57,6 @@ namespace BlackJack
          ***************************************/
         public static void HitOrStay(Player whoseTurn)
         {
-            while (whoseTurn.score < 17)
-            {
-                Dealer.DealCardToHand(whoseTurn);
-            }
         }
 
 

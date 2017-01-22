@@ -17,7 +17,7 @@ namespace BlackJack
          ***********************************/
         public static List<Cards> CreateDeck()
         {
-            var deck = new List<Cards>();
+            List<Cards> deck = new List<Cards>();
 
             CreateHearts(deck);
             CreateDiamonds(deck);

@@ -16,33 +16,48 @@ namespace BlackJack
         public static void DisplayTable()
         {
             Console.Write("Player's Hand: \t \t \t");
-            Console.Write("Dealer's Hand: ");
+            Console.Write("Dealer's Hand: \n");
         }
 
         /*****************************************
          * InitialDeal()
-         *      Creates deck
-         *      Deals two cards to each player
-         *      Displays one card for dealer
-         *      Displays two cards for player
-         ****************************************/
-        public static void InitialDeal(Player player, Player dealer)
+         *      Deals 2 cards to player/dealer
+'         ****************************************/
+        public static void InitialDeal(Player dealer, Player player, List<Cards> deck)
         {
-            deck1 = Dealer.GetDeck();
+            Dealer.DealCardToHand(player, deck);
+            Dealer.DealCardToHand(player, deck);
+            DisplayHand(player);
 
-            Dealer.DealCardToHand(player);
-            Dealer.DealCardToHand(player);
-
-            Dealer.DealCardToHand(dealer);
-
-            Console.WriteLine("\n");
-            Dealer.DisplayHand(player);
-            Console.Write("\t \t \t");
-            Dealer.DisplayHand(dealer);
-
-            Dealer.DealCardToHand(dealer);
+            Dealer.DealCardToHand(dealer, deck);
+            DisplayHand(dealer);
+            Dealer.DealCardToHand(dealer, deck);
 
             Console.ReadLine();
+        }
+
+        /*****************************************
+         * DisplayHand()
+         *      Displays hand of selected player/dealer
+'         ****************************************/
+        public static void DisplayHand(Player whoseHand)
+        {
+            if (whoseHand.name.ToLower() == "player")
+            {
+                foreach (Cards card in Dealer.playerHand)
+                {
+                    Console.Write(card.DisplayFace() + " ");
+                    Console.Write(card.DisplaySuit());
+                }
+            }
+            else
+            {
+                foreach (Cards card in Dealer.dealerHand)
+                {
+                    Console.Write(card.DisplayFace() + " ");
+                    Console.Write(card.DisplaySuit());
+                }
+            }
         }
     }
 }
