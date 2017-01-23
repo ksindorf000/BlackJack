@@ -83,7 +83,7 @@ namespace BlackJack
                     if (p.currentState == State.Bust || p.currentState == State.Won)
                     {
                         gameOn = false;
-                        break;
+                        continue;
                     }
                     else if (p.currentState == State.NoBust)
                     {

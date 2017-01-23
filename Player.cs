@@ -14,7 +14,7 @@ namespace BlackJack
     public class Player
     {
         public string name;
-        public int score;
+        public int score = 0;
         public List<Cards> hand;
         public State currentState = State.NoBust;
 
