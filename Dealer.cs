@@ -30,12 +30,27 @@ namespace BlackJack
             deck.Remove(card);
         }
 
+        /************************************
+         * ShowDealerHand()
+         ***********************************/
+        public static void ShowDealerHand(Player dealer)
+        {
+            foreach (Cards card in dealer.hand)
+            {
+                Console.Write(card.DisplayFace() + " ");
+                Console.Write(card.DisplaySuit() + "\n");
+            }
+        }
+
         /*******************************************************
        * DealerTurn()
        *      Sets Dealers Move
         ******************************************************/
         public static void DealerTurn(Player dealer, List<Cards> deck)
         {
+            CalcScore(dealer);
+            WinConditions(dealer);
+
             string hitStay;
 
             while (dealer.currentState != State.Won && dealer.currentState != State.Bust)

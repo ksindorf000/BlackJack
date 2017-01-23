@@ -50,9 +50,10 @@ namespace BlackJack
         *       Hit = deal card to hand
         *       Stay = end turn
         ******************************************************/
-        public static void HitOrStay(Player whoseTurn, List<Cards> deck)
+        public static bool HitOrStay(Player whoseTurn, List<Cards> deck)
         {
             bool valid = true;
+            bool gameOn = true;
             string hitStay;
 
             do
@@ -62,8 +63,8 @@ namespace BlackJack
                 valid = ValidateInput(hitStay);
             } while (!valid);
 
-            PlayGame.PerformHitStay(whoseTurn, deck, hitStay);
-
+            gameOn = PlayGame.PerformHitStay(whoseTurn, deck, hitStay);
+            return gameOn;
         }
 
         /*******************************************************
