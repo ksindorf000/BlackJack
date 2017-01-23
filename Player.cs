@@ -92,8 +92,18 @@ namespace BlackJack
                 whoseTurn.score += card.DisplayValue();
             }
 
+            //if (whoseTurn.score >= 21)
+            //{
+            //    whoseTurn.score = CheckForAce();
+            //}
+
             return whoseTurn.score;
         }
+
+        //public static int CheckForAce()
+        //{
+
+        //}
         
         /***********************************************************
          * WinConditions()
@@ -103,7 +113,11 @@ namespace BlackJack
         {
             bool gameOn = true; 
 
-            if (whoseTurn.score > 21)
+            if (whoseTurn.currentState == State.Stay)
+            {
+                gameOn = false;
+            }
+            else if (whoseTurn.score > 21)
             {
                 whoseTurn.currentState = State.Bust;
                 gameOn = false;

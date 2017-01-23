@@ -8,8 +8,6 @@ namespace BlackJack
 {
     public class Dealer : Player
     {
-        static private Random rng = new Random();
-
         /************************************
          * Default Constructor
          ***********************************/
@@ -24,7 +22,9 @@ namespace BlackJack
          ***********************************/
         public static void DealCardToHand(Player whoseTurn, List<Cards> deck)
         {
-            Cards card = deck[rng.Next(deck.Count)];
+            Random rng = new Random();
+
+            Cards card = deck[rng.Next(deck.Count())];
 
             whoseTurn.hand.Add(card);
             deck.Remove(card);
@@ -48,16 +48,20 @@ namespace BlackJack
         ******************************************************/
         public static void DealerTurn(Player dealer, List<Cards> deck)
         {
-            CalcScore(dealer);
-            WinConditions(dealer);
-
             string hitStay;
 
             while (dealer.currentState == State.NoBust)
             {
+                CalcScore(dealer);
+                WinConditions(dealer);
+
                 if (dealer.currentState == State.NoBust && dealer.score <= 17)
                 {
                     hitStay = "h";
+                }
+                else if (dealer.currentState == State.Bust)
+                {
+                    break;
                 }
                 else
                 {
@@ -67,7 +71,7 @@ namespace BlackJack
                 PlayGame.PerformHitStay(dealer, deck, hitStay);
             }
 
-            
+
         }
     }
 }

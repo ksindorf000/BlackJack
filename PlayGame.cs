@@ -16,6 +16,8 @@ namespace BlackJack
         ******************************************************/
         public static void InitialDeal(List<Player> playerList, List<Cards> deck)
         {
+            Console.Clear();
+
             //Each player/dealer gets two cards
             foreach (Player p in playerList)
             {
@@ -89,7 +91,7 @@ namespace BlackJack
                     {
                         Player.HitOrStay(p, deck1);
                         Player.CalcScore(p);
-                        gameOn = Player.WinConditions(p);
+                        gameOn = Player.WinConditions(p); //Will need to change this before playing with multiple players
                     }
                     
                     if (gameOn == false)
@@ -102,6 +104,7 @@ namespace BlackJack
                 {
                     gameOn = CheckAllStay(playerList);
                 }
+
                 Console.Clear();
                 DisplayBoard(playerList);
                 
@@ -111,7 +114,6 @@ namespace BlackJack
         /*******************************************************
        * DisplayBoard()
        *      Displays hands of each player/dealer
-       *      Intend to add funcionality for multiple players
         ******************************************************/
         public static void DisplayBoard(List<Player> playerList)
         {
@@ -175,12 +177,19 @@ namespace BlackJack
         * DisplayFinal()
         *      Displays all players/dealer score and state
         ******************************************************/
-        public static void DisplayFinal(List<Player> playerList)
+        public static bool DisplayFinal(List<Player> playerList)
         {
+            Console.Clear();
+
+            DisplayBoard(playerList);
+
             foreach (Player p in playerList)
             {
                 Console.WriteLine($"{p}");
             }
+
+            bool gameOn = false;
+            return gameOn;
         }
 
     }

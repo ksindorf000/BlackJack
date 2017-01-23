@@ -10,24 +10,22 @@ namespace BlackJack
     {
         static List<Player> playerList = new List<Player>();
         static bool keepPlaying = true;
+        static string userInput;
 
         static void Main(string[] args)
         {
-            string userInput;
-            bool valid = true;
+            //Create Player and Dealer
+            Dealer dealer = new Dealer();
+            Player player = new Player("Player");
+
+            //Add Player and Dealer to List<Players>
+            playerList.Add(dealer);
+            playerList.Add(player);
 
             while (keepPlaying)
             {
-                //Create Deck
+                //Create New Deck
                 List<Cards> deck1 = Deck.CreateDeck();
-
-                //Create Player and Dealer
-                Dealer dealer = new Dealer();
-                Player player = new Player("Player");
-
-                //Add Player and Dealer to List<Players>
-                playerList.Add(dealer);
-                playerList.Add(player);
 
                 //Initial Deal of two cards per player
                 PlayGame.InitialDeal(playerList, deck1);
@@ -40,32 +38,68 @@ namespace BlackJack
 
                 //Display Final
                 PlayGame.DisplayFinal(playerList);
-            }
 
-            while (valid)
-            {
-                Console.WriteLine("Would you like to play again? (Y/N): ");
-                userInput = Console.ReadLine().ToLower();
-                valid = ValidateInput(userInput);
+                //Does the player want to keep playing?
+                keepPlaying = ContinuePlay();
             }
         }
 
-        private static bool ValidateInput(string userInput)
+        /*******************************************************
+        * ContinuePlay()
+        *      Asks player if they want to keep playing
+        *      Calls for validation of input
+        *      Clears players hands if keepPlaying
+        ******************************************************/
+        private static bool ContinuePlay()
         {
-            bool valid = true;
+            bool valid = false;
 
-            if (userInput == "y")
+            while (!valid)
             {
-                keepPlaying = true;
+                Console.WriteLine("Would you like to play again? (Y/N): ");
+                userInput = Console.ReadLine().ToLower();
+                valid = ValidateInput();
             }
-            else if (userInput == "n")
+
+            if (userInput == "n")
             {
                 keepPlaying = false;
             }
             else
             {
+                keepPlaying = true;
+                ClearPlayerHands();
+            }
+
+            return keepPlaying;
+        }
+
+        /*******************************************************
+        * ClearPlayerHands()
+        ******************************************************/
+        private static void ClearPlayerHands()
+        {
+            foreach (Player p in playerList)
+            {
+                p.hand = new List<Cards>();
+            }
+        }
+
+        /*******************************************************
+        * ValidateInput()
+        ******************************************************/
+        private static bool ValidateInput()
+        {
+            bool valid = true;
+
+            if (userInput != "n" && userInput != "y")
+            {
                 Console.WriteLine("Invalid input.");
                 valid = false;
+            }
+            else
+            {
+                valid = true;
             }
 
             return valid;
