@@ -53,7 +53,7 @@ namespace BlackJack
 
             string hitStay;
 
-            while (dealer.currentState != State.Won && dealer.currentState != State.Bust)
+            while (dealer.currentState == State.NoBust)
             {
                 if (dealer.currentState == State.NoBust && dealer.score <= 17)
                 {
