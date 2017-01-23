@@ -87,17 +87,24 @@ namespace BlackJack
                     }
                     else if (p.currentState == State.NoBust)
                     {
-                        gameOn = Player.HitOrStay(p, deck1);
+                        Player.HitOrStay(p, deck1);
                         Player.CalcScore(p);
-                        Player.WinConditions(p);
+                        gameOn = Player.WinConditions(p);
                     }
+                    
+                    if (gameOn == false)
+                    {
+                        break;
+                    }
+
                 }
-                Console.Clear();
-                DisplayBoard(playerList);
                 if (gameOn == true)
                 {
                     gameOn = CheckAllStay(playerList);
                 }
+                Console.Clear();
+                DisplayBoard(playerList);
+                
             }
         }
 
@@ -127,10 +134,8 @@ namespace BlackJack
         *       If Hit, deal card to hand
         *       If Stay, change State
         ******************************************************/
-        public static bool PerformHitStay(Player whoseTurn, List<Cards> deck, string hitStay)
+        public static void PerformHitStay(Player whoseTurn, List<Cards> deck, string hitStay)
         {
-            bool gameOn = true;
-
             if (hitStay == "h")
             {
                 Dealer.DealCardToHand(whoseTurn, deck);
@@ -138,9 +143,7 @@ namespace BlackJack
             else if (hitStay == "s")
             {
                 whoseTurn.currentState = State.Stay;
-                gameOn = false;
             }
-            return gameOn;
         }
 
         /*******************************************************
