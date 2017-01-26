@@ -59,25 +59,10 @@ namespace BlackJack
             {
                 Console.WriteLine($"{whoseTurn.name} Hit or Stay? (H/S): ");
                 hitStay = Console.ReadLine().ToLower();
-                valid = ValidateInput(hitStay);
+                valid = (hitStay == "h" || hitStay == "s") ? true : false;
             } while (!valid);
 
             PlayGame.PerformHitStay(whoseTurn, deck, hitStay);
-        }
-
-        /*******************************************************
-        * ValidateInput()
-        ******************************************************/
-        public static bool ValidateInput(string hitStay)
-        {
-            if (hitStay == "h" || hitStay == "s")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         /************************************
@@ -104,14 +89,14 @@ namespace BlackJack
         //{
 
         //}
-        
+
         /***********************************************************
          * WinConditions()
          *      Determines if the player/dealer has busted or won
          ***********************************************************/
         public static bool WinConditions(Player whoseTurn)
         {
-            bool gameOn = true; 
+            bool gameOn = true;
 
             if (whoseTurn.currentState == State.Stay)
             {
